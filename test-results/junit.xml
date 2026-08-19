@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="32" failures="0" errors="0" time="2.297">
+  <testsuite name="WorkshopsService" errors="0" failures="0" skipped="0" timestamp="2026-08-19T14:28:10" time="1.708" tests="9">
+    <testcase classname="WorkshopsService should be defined" name="WorkshopsService should be defined" time="0.007">
+    </testcase>
+    <testcase classname="WorkshopsService create should create and populate a workshop" name="WorkshopsService create should create and populate a workshop" time="0.002">
+    </testcase>
+    <testcase classname="WorkshopsService findAll should return all workshops populated" name="WorkshopsService findAll should return all workshops populated" time="0.001">
+    </testcase>
+    <testcase classname="WorkshopsService findOne should return a workshop by id" name="WorkshopsService findOne should return a workshop by id" time="0.001">
+    </testcase>
+    <testcase classname="WorkshopsService findOne should throw NotFoundException if workshop not found" name="WorkshopsService findOne should throw NotFoundException if workshop not found" time="0.005">
+    </testcase>
+    <testcase classname="WorkshopsService update should update a workshop" name="WorkshopsService update should update a workshop" time="0.001">
+    </testcase>
+    <testcase classname="WorkshopsService update should throw NotFoundException if workshop not found" name="WorkshopsService update should throw NotFoundException if workshop not found" time="0.001">
+    </testcase>
+    <testcase classname="WorkshopsService remove should delete a workshop" name="WorkshopsService remove should delete a workshop" time="0.001">
+    </testcase>
+    <testcase classname="WorkshopsService remove should throw NotFoundException if workshop not found" name="WorkshopsService remove should throw NotFoundException if workshop not found" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="NotionsService" errors="0" failures="0" skipped="0" timestamp="2026-08-19T14:28:10" time="1.724" tests="9">
+    <testcase classname="NotionsService should be defined" name="NotionsService should be defined" time="0.008">
+    </testcase>
+    <testcase classname="NotionsService create should create a notion" name="NotionsService create should create a notion" time="0.002">
+    </testcase>
+    <testcase classname="NotionsService findAll should return all notions" name="NotionsService findAll should return all notions" time="0.002">
+    </testcase>
+    <testcase classname="NotionsService findOne should return a notion by id" name="NotionsService findOne should return a notion by id" time="0.001">
+    </testcase>
+    <testcase classname="NotionsService findOne should throw NotFoundException if notion not found" name="NotionsService findOne should throw NotFoundException if notion not found" time="0.005">
+    </testcase>
+    <testcase classname="NotionsService update should update a notion" name="NotionsService update should update a notion" time="0">
+    </testcase>
+    <testcase classname="NotionsService update should throw NotFoundException if notion not found" name="NotionsService update should throw NotFoundException if notion not found" time="0.001">
+    </testcase>
+    <testcase classname="NotionsService remove should delete a notion" name="NotionsService remove should delete a notion" time="0.001">
+    </testcase>
+    <testcase classname="NotionsService remove should throw NotFoundException if notion not found" name="NotionsService remove should throw NotFoundException if notion not found" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="NotionsController" errors="0" failures="0" skipped="0" timestamp="2026-08-19T14:28:10" time="1.828" tests="7">
+    <testcase classname="NotionsController should be defined" name="NotionsController should be defined" time="0.008">
+    </testcase>
+    <testcase classname="NotionsController create should create a notion" name="NotionsController create should create a notion" time="0.002">
+    </testcase>
+    <testcase classname="NotionsController findAll should return all notions" name="NotionsController findAll should return all notions" time="0.001">
+    </testcase>
+    <testcase classname="NotionsController findOne should return a notion by id" name="NotionsController findOne should return a notion by id" time="0.001">
+    </testcase>
+    <testcase classname="NotionsController findOne should throw NotFoundException for unknown id" name="NotionsController findOne should throw NotFoundException for unknown id" time="0.005">
+    </testcase>
+    <testcase classname="NotionsController update should update a notion" name="NotionsController update should update a notion" time="0.001">
+    </testcase>
+    <testcase classname="NotionsController remove should delete a notion" name="NotionsController remove should delete a notion" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="WorkshopsController" errors="0" failures="0" skipped="0" timestamp="2026-08-19T14:28:10" time="1.839" tests="7">
+    <testcase classname="WorkshopsController should be defined" name="WorkshopsController should be defined" time="0.008">
+    </testcase>
+    <testcase classname="WorkshopsController create should create a workshop" name="WorkshopsController create should create a workshop" time="0.002">
+    </testcase>
+    <testcase classname="WorkshopsController findAll should return all workshops" name="WorkshopsController findAll should return all workshops" time="0.001">
+    </testcase>
+    <testcase classname="WorkshopsController findOne should return a workshop by id" name="WorkshopsController findOne should return a workshop by id" time="0.001">
+    </testcase>
+    <testcase classname="WorkshopsController findOne should throw NotFoundException for unknown id" name="WorkshopsController findOne should throw NotFoundException for unknown id" time="0.005">
+    </testcase>
+    <testcase classname="WorkshopsController update should update a workshop" name="WorkshopsController update should update a workshop" time="0">
+    </testcase>
+    <testcase classname="WorkshopsController remove should delete a workshop" name="WorkshopsController remove should delete a workshop" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>
