@@ -83,6 +83,6 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ./Dockerfile
+          file: ./dockerfile
           push: true
           tags: ghcr.io/${{ steps.user-name.outputs.user-name }}/${{ steps.repo-name.outputs.repo-name }}:${{steps.branch-name.outputs.branch-name}}${{ steps.commit-sha.outputs.commit-sha }}
