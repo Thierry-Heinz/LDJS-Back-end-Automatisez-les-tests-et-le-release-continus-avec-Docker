@@ -35,4 +35,54 @@ jobs:
         with:
           report_paths: './test-results/junit.xml'
 
-      
+  build:
+    needs: test
+    if: success() # only run if the test job is successful
+    runs-on: ubuntu-latest
+    outputs: 
+      repo-name: ${{ steps.repo-name.outputs.repo-name }}
+      user-name: ${{ steps.user-name.outputs.user-name }}
+      branch-name: ${{ steps.branch-name.outputs.branch-name }}
+      commit-sha: ${{ steps.commit-sha.outputs.commit-sha }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Github repository lowercase name
+        id: repo-name
+        run: |
+            VALUE=$(echo "${{ github.repository }}" | cut -d/ -f2 | tr '[:upper:]' '[:lower:]')
+            echo "repo-name=$VALUE" >> "$GITHUB_OUTPUT"
+
+      - name: Github username
+        id: user-name
+        run: |
+            VALUE=$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')
+            echo "user-name=$VALUE" >> "$GITHUB_OUTPUT"
+
+      - name: Branch name
+        id: branch-name
+        run: |
+            VALUE=$(echo "${{ github.ref_name }}" | tr '[:upper:]' '[:lower:]' | tr '/' '-')
+            echo "branch-name=$VALUE" >> "$GITHUB_OUTPUT"
+
+      - name: SHA of the commit
+        id: commit-sha
+        run: |
+            VALUE=$(echo "${{ github.sha }}" | cut -c1-7)
+            echo "commit-sha=$VALUE" >> "$GITHUB_OUTPUT"
+
+      - name: Github Packages Docker Login
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker build and push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/${{ steps.user-name.outputs.user-name }}/${{ steps.repo-name.outputs.repo-name }}:${{steps.branch-name.outputs.branch-name}}${{ steps.commit-sha.outputs.commit-sha }}
