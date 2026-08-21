@@ -1,6 +1,6 @@
 {
   "name": "p6-dfsjs-backend",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Workshop Organizer Web API - NestJS backend for managing workshops and notions",
   "private": true,
   "scripts": {
@@ -15,7 +15,6 @@
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-
   "keywords": [
     "nestjs",
     "mongodb",
@@ -78,9 +77,12 @@
       "^@core/(.*)$": "<rootDir>/core/$1",
       "^@modules/(.*)$": "<rootDir>/modules/$1"
     },
-    "reporters": ["default", "jest-junit"]
+    "reporters": [
+      "default",
+      "jest-junit"
+    ]
   },
-    "jest-junit": {
+  "jest-junit": {
     "outputDirectory": "test-results",
     "outputName": "junit.xml"
   }
