@@ -88,4 +88,39 @@ jobs:
           context: .
           file: ./dockerfile
           push: true
-          tags: ghcr.io/${{ steps.user-name.outputs.user-name }}/${{ steps.repo-name.outputs.repo-name }}:${{steps.branch-name.outputs.branch-name}}${{ steps.commit-sha.outputs.commit-sha }}
+          tags: ghcr.io/${{ steps.user-name.outputs.user-name }}/${{ steps.repo-name.outputs.repo-name }}:${{steps.branch-name.outputs.branch-name}}-${{ steps.commit-sha.outputs.commit-sha }}
+
+  release:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    outputs: 
+      semver: ${{ steps.semver.outputs.new_release_version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v6
+        id: semver
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Github Packages Docker Login
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker build and push
+        uses: docker/build-push-action@v7
+        if: steps.semver.outputs.new_release_published == 'true'
+        with:
+          context: .
+          file: ./dockerfile
+          push: true
+          tags: ghcr.io/${{ needs.build.outputs.user-name }}/${{ needs.build.outputs.repo-name }}:${{ steps.semver.outputs.new_release_version }}
